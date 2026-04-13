@@ -1,21 +1,18 @@
 def procesar_lista(lista):
-    resultado = []
-    for elemento in lista:
-        if isinstance(elemento, int):
-            resultado.append(elemento * 2)
-        elif isinstance(elemento, str):
-            resultado.append(elemento.upper())
-        else:
-            resultado.append(elemento)
-    return resultado
-K=int(input("Ingrese el número de elementos en la lista: "))
-mi_lista = []
-for i in range(K):
-    r = input(f"Ingrese el elemento {i + 1}: ")
-    if r.isdigit():
-        m = int(r)
+    if not lista:
+        return []
+    primero=lista[0]
+    resto=procesar_lista(lista[1:])
+    if primero % 2 == 0:
+        return [primero**2] + resto
     else:
-        m = r
-    mi_lista.append(m)
-s = procesar_lista(mi_lista)
-print("Lista procesada:", s)
+        return resto
+    
+K=int(input("Ingrese el número de elementos en la lista: "))
+m = []
+for i in range(K):  
+    n = int(input(f"Ingrese el elemento {i + 1}: "))
+    m.append(n)
+
+r = procesar_lista(m)
+print("Lista procesada (solo números pares):", r)
