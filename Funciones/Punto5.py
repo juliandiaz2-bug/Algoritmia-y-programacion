@@ -12,7 +12,7 @@ for i in range(K):
     n = int(input(f"Ingrese el elemento {i + 1}: "))
     mi_lista.append(n)
 s = encontrar_maximo(mi_lista)
-if resultado is not None:
-    print("El número máximo en la lista es:", resultado)
+if s is not None:
+    print("El número máximo en la lista es:", s)
 else:
     print("La lista está vacía, no se puede encontrar un máximo.") 
