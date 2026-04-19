@@ -1,9 +1,13 @@
-def suma_resusevia(a, b):
-    if b == 0:
-        return a
+def suma_resusevia(lista):
+    if not lista:
+        return 0
     else:
-        return suma_resusevia(a + 1, b - 1)
-k= int(input("Ingrese el primer número: "))
-s= int(input("Ingrese el segundo número: "))
-resultado = suma_resusevia(k, s)
-print(f"La suma de {k} y {s} es: {resultado}")
+        return lista[0] + suma_resusevia(lista[1:])
+K=int(input("Ingrese el número de elementos en la lista: "))
+m = []
+for i in range(K):  
+    n = int(input(f"Ingrese el elemento {i + 1}: "))
+    m.append(n)
+r = suma_resusevia(m)
+print(f"La suma de los elementos en la lista es: {r}")
+

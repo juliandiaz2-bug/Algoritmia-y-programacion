@@ -4,6 +4,5 @@ def invertir_cadena(cadena):
     else:
         return cadena[-1] + invertir_cadena(cadena[:-1])
 k= input("Ingrese una cadena para invertir: ")
-resultado = invertir_cadena(k)
-print("Cadena invertida:", resultado)
-
+r = invertir_cadena(k)
+print("Cadena invertida:", r)
