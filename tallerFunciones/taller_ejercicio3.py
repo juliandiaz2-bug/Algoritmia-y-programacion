@@ -51,7 +51,7 @@ def mostrar_inventario(diccionario):
     Entradas:
         diccionario (dict): El inventario que se desea visualizar.
     """
-    for nombre, detalles in diccionario.items():    #.items() devuelve una vista de los pares clave-valor del diccionario, lo que permite iterar sobre ambos al mismo tiempo                       
+    for nombre, detalles in diccionario.items():#.items() devuelve una vista de los pares clave-valor del diccionario, lo que permite iterar sobre ambos al mismo tiempo y nombre es la clave (nombre del producto) y detalles es el valor asociado a esa clave (otro diccionario con 'cantidad' y 'precio')               
         print(f"Producto: {nombre}, Cantidad: {detalles['cantidad']}, Precio: {detalles['precio']}")
 inventario = {}
 while True:

@@ -35,7 +35,7 @@ def calcular_promedio_ponderado(lista):
         return 0 
     porcentajes = [0.3, 0.3, 0.4]
     sum_ponderada = 0
-    for i in range(len(lista)):
+    for i in range(len(lista)): #rango va desde 0 hasta el número de elementos en la lista (exclusivo), lo que permite acceder a cada elemento por su índice
         sum_ponderada += lista[i] * porcentajes[i]      
     return sum_ponderada
 def estudiantes_con_promedio_mayor_a(lista, umbral):

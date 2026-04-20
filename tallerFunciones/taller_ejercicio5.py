@@ -96,14 +96,14 @@ def jugar():
         intentos_restantes -= 1
         print(f"Te quedan {intentos_restantes} intentos.")
         if intentos_restantes == 0:
-            print(f"Lo siento, has agotado tus intentos. El número secreto era {numero}.")
+            print(f"\033[31mLo siento, has agotado tus intentos. El número secreto era {numero}.\033[0m")
             break
         if intento < numero:
             print("Demasiado bajo. Intenta de nuevo.")
         elif intento > numero:
             print("Demasiado alto. Intenta de nuevo.")
         else:
-            print(f"¡Felicidades! Has adivinado el número {numero} correctamente.")
+            print(f"\033[32m¡Felicidades! Has adivinado el número {numero} correctamente.\033[0m")
             break
 
 if __name__ == "__main__":#El bloque if __name__ == "__main__": se utiliza para asegurarse de que el código dentro de este bloque solo se ejecute cuando el script se ejecute directamente, y no cuando se importe como un módulo en otro script. Esto es útil para evitar que el juego se inicie automáticamente si este archivo se importa desde otro lugar. Si el script se ejecuta directamente, se llamará a la función jugar() para iniciar el juego.

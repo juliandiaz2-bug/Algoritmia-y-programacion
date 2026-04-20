@@ -1,6 +1,3 @@
-
-
-
 def metodo_de_pago(monto, metodo_pago):
     """
     Valida y procesa el método de pago seleccionado por el usuario.
@@ -34,7 +31,7 @@ def proceso_de_pago(precio,pago):
     if pago >= precio:
         return "Pago exitoso"
     else:
-        return "Pago insuficiente"
+        return "Pago insuficiente, devolviendo monto"
 
 def productos_de_la_maquina():
     """
