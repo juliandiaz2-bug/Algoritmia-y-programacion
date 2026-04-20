@@ -1,6 +1,18 @@
 
 def factorial(n):
-    """Calcula el factorial de un número."""
+    """
+    Calcula el producto de todos los números enteros positivos desde 1 hasta n.
+
+    Utiliza un enfoque iterativo (bucle for) para obtener el resultado. 
+    Maneja casos especiales para 0, 1 y números negativos.
+
+    Entradas:
+        n (int): El número entero del cual se desea obtener el factorial.
+
+    Retorna:
+        int/str: El valor del factorial si n >= 0, o un mensaje de error 
+                 si el número ingresado es negativo.
+    """
     if n < 0:
         return "El factorial no está definido para números negativos."
     elif n == 0 or n == 1:

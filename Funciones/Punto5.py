@@ -1,5 +1,16 @@
 def encontrar_maximo(lista):
-    """Encuentra el número máximo en una lista de números utilizando recursión."""  
+    """
+    Encuentra el valor más alto en una lista utilizando recursión.
+
+    Compara el primer elemento con el máximo encontrado en el resto de la 
+    lista de forma sucesiva hasta reducirla a un solo elemento.
+
+    Entradas:
+        lista (list): Una secuencia de números.
+
+    Retorna:
+        numérico/None: El valor máximo de la lista. Retorna None si la lista está vacía.
+    """  
     if len(lista) == 0:
         return None
     elif len(lista) == 1:

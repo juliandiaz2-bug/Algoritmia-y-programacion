@@ -1,5 +1,13 @@
 def suma_resusevia(lista):
-    """Calcula la suma de los elementos en una lista de forma recursiva."""
+    """
+    Calcula el promedio (media aritmética) de una lista de números.
+
+    Entradas:
+        lista (list): Una secuencia de números enteros o flotantes.
+
+    Retorna:
+        float: El resultado del promedio. Si la lista está vacía, retorna 0.
+    """
     if not lista:
         return 0
     else:
