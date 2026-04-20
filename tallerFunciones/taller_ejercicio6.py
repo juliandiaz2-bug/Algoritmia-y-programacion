@@ -1,4 +1,4 @@
-from math import prod
+
 
 
 def metodo_de_pago(monto, metodo_pago):
@@ -66,11 +66,11 @@ def dar_vuelto(monto_pagado, precio):
     """
     if monto_pagado > precio:
         vuelto = monto_pagado - precio
-        return f"Su vuelto es: {vuelto} pesos"
+        return f"Su vuelto es: {vuelto} pesos"#f es una forma de formatear cadenas en Python que permite insertar valores de variables directamente dentro de la cadena utilizando llaves {}. En este caso, el valor de la variable vuelto se inserta en la cadena para mostrar el mensaje completo al usuario.
     else:
         return "No se requiere dar vuelto"
 print("Bienvenido a la máquina expendedora, estos son los productos disponibles:")
-for codigo, info in productos_de_la_maquina().items():#codigo es la clave del diccionario (1, 2, 3, etc.) e info es el valor asociado a esa clave (otro diccionario con 'nombre' y 'precio')
+for codigo, info in productos_de_la_maquina().items():#codigo es la clave del diccionario (1, 2, 3, etc.) e info es el valor asociado a esa clave (otro diccionario con 'nombre' y 'precio') e items() devuelve una vista de los pares clave-valor del diccionario, lo que permite iterar sobre ambos al mismo tiempo
     print(f"{codigo}. {info['nombre']} - {info['precio']} pesos")
 p=int(input("Ingrese el número del producto que desea comprar: "))
 if p < 1 or p > 5:
@@ -83,7 +83,7 @@ if str(p) in productos:
     metodo_pago = input("Ingrese el método de pago (tarjeta/efectivo): ")
     monto_pago = metodo_de_pago(precio, metodo_pago)
     if monto_pago is not None:
-        monto_usuario = float(input("Ingrese el monto con el que va a pagar: "))
+        monto_usuario = float(input("Ingrese el monto con el que va a pagar: "))#float() convierte la entrada del usuario (que es una cadena) en un número decimal, lo que permite realizar operaciones matemáticas con ese valor posteriormente en el código.
     resultado_pago = proceso_de_pago(precio, monto_usuario)
     print(resultado_pago)
     if resultado_pago == "Pago exitoso":    
