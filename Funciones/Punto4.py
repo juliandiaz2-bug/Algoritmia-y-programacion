@@ -1,4 +1,5 @@
 def invertir_cadena(cadena):
+    """Invierte una cadena de texto utilizando recursión."""
     if len(cadena) == 0:
         return ""
     else:

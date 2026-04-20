@@ -6,10 +6,31 @@ notas = {
 "Nevil": [2.5, 3.0, 3.2]
 }
 def calcular_promedio_simple(lista):
+    """
+    Calcula la media aritmética básica de una lista de valores.
+
+    Entradas:
+        lista (list): Una secuencia de números (ej. notas de un estudiante).
+
+    Retorna:
+        float: El promedio simple. Retorna 0 si la lista está vacía.
+    """
     if len(lista) == 0:
         return 0
     return sum(lista) / len(lista)
 def calcular_promedio_ponderado(lista):
+    """
+    Calcula el promedio aplicando pesos específicos (30%, 30% y 40%).
+
+    Nota: Se asume que la lista contiene exactamente 3 elementos para 
+    coincidir con los porcentajes definidos [0.3, 0.3, 0.4].
+
+    Entradas:
+        lista (list): Una secuencia de números.
+
+    Retorna:
+        float: La suma ponderada de los valores. Retorna 0 si la lista está vacía.
+    """
     if len(lista) == 0:
         return 0 
     porcentajes = [0.3, 0.3, 0.4]
@@ -18,8 +39,29 @@ def calcular_promedio_ponderado(lista):
         sum_ponderada += lista[i] * porcentajes[i]      
     return sum_ponderada
 def estudiantes_con_promedio_mayor_a(lista, umbral):
+    """
+    Filtra a los estudiantes cuyo promedio simple supera un límite.
+
+    Entradas:
+        lista (dict/list): Aunque se recibe como 'lista', el código interno 
+                           itera sobre un diccionario global llamado 'notas'.
+        umbral (float): El valor mínimo (no inclusive) para filtrar.
+
+    Retorna:
+        list: Una lista con los nombres de los estudiantes que cumplen la condición.
+    """
     return [estudiante for estudiante in notas if calcular_promedio_simple(notas[estudiante]) > umbral]
 def estudiantes_aprobados(lista, umbral):
+    """
+    Filtra a los estudiantes cuyo promedio ponderado es igual o mayor al umbral.
+
+    Entradas:
+        lista (dict/list): Referencia al conjunto de datos de estudiantes.
+        umbral (float): La nota mínima necesaria para aprobar.
+
+    Retorna:
+        list: Nombres de los estudiantes que aprobaron según el cálculo ponderado.
+    """
     return [estudiante for estudiante in notas if calcular_promedio_ponderado(notas[estudiante]) >= umbral]
 umbral_simple = 3.0
 umbral_ponderado = 3.0

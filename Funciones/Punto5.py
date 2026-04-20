@@ -1,4 +1,5 @@
 def encontrar_maximo(lista):
+    """Encuentra el número máximo en una lista de números utilizando recursión."""  
     if len(lista) == 0:
         return None
     elif len(lista) == 1:

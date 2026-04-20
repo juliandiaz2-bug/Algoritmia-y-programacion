@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{enumitem}
+
+\title{Puntos Teóricos del parcial 2}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción a la POO}
+La Programación Orientada a Objetos (POO) es un paradigma de programación que organiza el diseño de software en torno a ``objetos'' que contienen datos y comportamiento en lugar de funciones y lógica pura. Se utiliza para facilitar la creación de software complejo, permitiendo que el código sea más reutilizable, organizado y fácil de mantener al modelar entidades del mundo real.
+
+\section{Conceptos Fundamentales}
+\begin{description}
+    \item[Abstracción:] Seleccionar solo los detalles esenciales de un objeto y ocultar los complejos o irrelevantes para el usuario.
+    \item[Encapsulamiento:] Agrupar datos y métodos en una sola unidad (clase) y restringir el acceso directo a los componentes internos para proteger la integridad del objeto.
+    \item[Herencia:] Permitir que una clase nueva (hija) herede atributos y métodos de una clase existente (padre), facilitando la reutilización de código.
+    \item[Polimorfismo:] La capacidad de diferentes objetos de responder de manera distinta a un mismo mensaje o comando.
+\end{description}
+
+\section{Clases y su Estructura}
+Una clase es una plantilla o molde que define la estructura y el comportamiento de los objetos, pudiendo contener tanto datos (estado) como funciones (comportamiento). 
+
+\subsection{Diferencia con las Funciones}
+Una función es un bloque de código aislado que realiza una tarea específica y termina su ejecución. En cambio, una clase es una entidad completa que permite crear múltiples instancias (objetos) que mantienen su propio estado a lo largo del tiempo.
+
+\section{El Constructor}
+El constructor o inicializador de una clase es un método especial que se invoca automáticamente al momento de crear una nueva instancia u objeto, funcionando como el punto de partida de su ciclo de vida. 
+
+Su propósito fundamental es establecer el estado inicial del objeto, definiendo y asignando los valores de los atributos esenciales que la clase requiere para operar correctamente. Al centralizar la configuración inicial, el constructor garantiza que ningún objeto sea creado de forma incompleta o con datos nulos, permitiendo que la entidad sea funcional desde el primer segundo de su existencia.
+
+\end{document}

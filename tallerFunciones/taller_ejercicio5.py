@@ -1,66 +1,113 @@
-def generar_numeros_aleatorios(limite_max=100):
-    """Genera una lista de números aleatorios dentro de un rango especificado."""
-    semilla=id(object)  #id(object) devuelve un número único para el objeto dado, que se puede usar como semilla para generar números aleatorios
-    a=1664525
-    c=1013904223
-    m=2**32
-    numeros_aleatorios = []
-    for _ in range(10):  # Genera 10 números aleatorios
-        p = (a * semilla + c) % m
-        numeros_aleatorios.append(p % limite_max)#.append() agrega un elemento a la lista, % limite_max asegura que el número generado esté dentro del rango especificado por el usuario
-        semilla = p  # Actualiza la semilla para el siguiente número aleatorio
-    return tuple(numeros_aleatorios)  # Devuelve una tupla con los números aleatorios dentro del límite
-def elegir_dificultad():
-    """Permite al usuario elegir la dificultad del juego."""
+import random
+
+def elegir_semilla():
+    """
+    Configura la semilla del generador de números aleatorios.
+    
+    Permite al usuario ingresar una cadena de texto para fijar la secuencia 
+    aleatoria (útil para pruebas). Si el usuario presiona Enter sin escribir 
+    nada, se mantiene la semilla predeterminada del sistema.
+
+    Entradas:
+        Ninguna (Lee desde teclado).
+    """
+    print("\nseleccion de semilla:")
+    print("Selecciona una semilla para generar números aleatorios:")
+Semilla_elegida= input("Ingresa el número correspondiente a la semilla o presiona Enter para usar la semilla predeterminada: ")
+if Semilla_elegida.strip() != "":  #strip() elimina los espacios en blanco al principio y al final de la cadena, lo que permite verificar si el usuario ingresó algo o dejó el campo vacío.  y != "" es una condición que verifica si la cadena no está vacía. Si el usuario ingresó una semilla válida, se establece esa semilla para el generador de números aleatorios utilizando random.seed(Semilla_elegida). Si el usuario no ingresó una semilla válida (es decir, dejó el campo vacío), se muestra un mensaje indicando que se utilizará la semilla predeterminada.
+        random.seed(Semilla_elegida)
+else:
+        print("No se ingresó una semilla válida. Se utilizará la semilla predeterminada.")
+
+def dificultad():
+    """
+    Muestra el menú de niveles y gestiona la cantidad de intentos permitidos.
+    
+    Presenta opciones desde 'Fácil' hasta 'Infernal'. Incluye una opción 
+    para salir del programa y una opción oculta (6).
+
+    Entradas:
+        Ninguna (Interacción por consola).
+
+    Retorna:
+        int: El número de intentos totales asignados a la dificultad elegida.
+    """
+    print("Selecciona el nivel de dificultad:")
+    print("1. Fácil(10 intentos)")
+    print("2. Medio (7 intentos)")
+    print("3. Difícil(4 intentos)")
+    print("4. infernal(2 intentos)")
+    print("5. salir")
+    #print("6.Secreto(1 intento)") 
     while True:
-        if dificultad in ['fácil', 'facil', 'medio', 'difícil', 'dificil', 'infernal']:
-            return dificultad.lower()
+        opcion = input("Ingresa el número correspondiente a la dificultad: ")
+        if opcion == "1":
+            return 10
+        elif opcion == "2":
+            return 7
+        elif opcion == "3":
+            return 4
+        elif opcion == "4":
+            return 2
+        elif opcion == "5":
+            print("Saliendo del juego. ¡Hasta luego!")
+            exit()
+        elif opcion == "6":
+            return 1
         else:
-            print("Opción no válida. Por favor, elige entre fácil, medio o difícil.")
-def intentos_para_dificultad(dificultad):
-    """Devuelve el número de intentos permitidos según la dificultad elegida."""
-    if dificultad.lower() == 'fácil':
-        return 10
-    elif dificultad.lower() == 'medio':
-        return 7
-    elif dificultad.lower() == 'difícil':
-        return 5
-    elif dificultad.lower() == 'infernal':
-        return 3
-def normalizar_dificultad(dificultad):
-    """Normaliza la entrada de dificultad para manejar diferentes formas de escribirla."""
-    if dificultad.lower() in ['fácil', 'facil']:
-        return 'fácil'
-    elif dificultad.lower() == 'medio':
-        return 'medio'
-    elif dificultad.lower() in ['difícil', 'dificil']:
-        return 'difícil'
-    elif dificultad.lower() == 'infernal':
-        return 'infernal'
-    else:
-        return None
-def jugar_segun_intentos(intentos, numeros_aleatorios):
-    """Permite al usuario jugar el juego de adivinar números según los intentos permitidos."""
-    print(f"Tienes {intentos} intentos para adivinar los números.")
-    for intento in range(1, intentos + 1):
+            print("Opción no válida. Por favor, ingresa un número del 1 al 5...?")
+
+def generar_numero():
+    """
+    Genera un número entero aleatorio entre 1 y 100.
+
+    Entradas:
+        Ninguna.
+
+    Retorna:
+        int: Un número aleatorio inclusivo entre 1 y 100.
+    """
+    return random.randint(1, 100) #Genera un número aleatorio entre 1 y 100 (inclusive)
+def jugar():
+    """
+    Ejecuta el bucle principal del juego de adivinanzas.
+    
+    Coordina la selección de semilla, dificultad y la lógica de intentos. 
+    Valida que las entradas del usuario sean números enteros y proporciona 
+    pistas de "Demasiado alto" o "Demasiado bajo".
+
+    Entradas:
+        Ninguna (Orquestador principal).
+    """
+    elegir_semilla()
+    numero = generar_numero()
+    intentos_restantes = dificultad()
+    print("¡Bienvenido al juego de adivinar el número!")
+    print("Estoy pensando en un número entre 1 y 100. ¿Seras capaz de adivinarlo?")
+    while intentos_restantes > 0:
         try:
-            adivinanza = int(input(f"Intento {intento}: Ingresa un número entre 0 y 99: "))
-            if adivinanza in numeros_aleatorios:
-                print("¡Felicidades! Has adivinado un número.")
-                return True
-            else:
-                print("Número incorrecto. Intenta de nuevo.")
+            intento = int(input("Ingresa tu intento: "))
+            if intento < 1 or intento > 100:
+                print("Por favor, ingresa un número entre 1 y 100.")
+                continue
         except ValueError:
             print("Entrada no válida. Por favor, ingresa un número entero.")
-    print("Lo siento, has agotado tus intentos. Los números eran:", numeros_aleatorios)
-    return False
-numeros_aleatorios = generar_numeros_aleatorios()
-dificultad = elegir_dificultad()
-intentos = intentos_para_dificultad(dificultad)
-jugar_segun_intentos(intentos, numeros_aleatorios)
+            continue
+        intentos_restantes -= 1
+        print(f"Te quedan {intentos_restantes} intentos.")
+        if intentos_restantes == 0:
+            print(f"Lo siento, has agotado tus intentos. El número secreto era {numero}.")
+            break
+        if intento < numero:
+            print("Demasiado bajo. Intenta de nuevo.")
+        elif intento > numero:
+            print("Demasiado alto. Intenta de nuevo.")
+        else:
+            print(f"¡Felicidades! Has adivinado el número {numero} correctamente.")
+            break
 
-i=int(input("Ingresa un número entre 0 y 100: "))
-if i in generar_numeros_aleatorios():
-    print("¡Felicidades! Has adivinado un número.")
-else:
-    print("Número incorrecto. Intenta de nuevo.")
+if __name__ == "__main__":#El bloque if __name__ == "__main__": se utiliza para asegurarse de que el código dentro de este bloque solo se ejecute cuando el script se ejecute directamente, y no cuando se importe como un módulo en otro script. Esto es útil para evitar que el juego se inicie automáticamente si este archivo se importa desde otro lugar. Si el script se ejecuta directamente, se llamará a la función jugar() para iniciar el juego.
+    jugar()
+
+
+    

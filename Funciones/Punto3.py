@@ -1,4 +1,5 @@
 def suma_resusevia(lista):
+    """Calcula la suma de los elementos en una lista de forma recursiva."""
     if not lista:
         return 0
     else:
